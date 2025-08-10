@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../Python in use"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "webs"
+	}
+}
