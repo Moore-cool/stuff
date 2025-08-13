@@ -1,7 +1,26 @@
-from flask import Flask
+from flask import Flask, request
  
 app = Flask(__name__) 
  
+
+@app.route('/faction')
+def faction():
+    a = '''ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,!.? '"'''
+
+    idxs = []
+
+    inputc = request.form['inputc']
+
+    for char in inputc:
+        index = a.find(char)
+        if index != -1:
+            idxs.append(str(index))
+
+    result_comma = "/".join(idxs)
+
+    return "<h2>"+result_comma+"</h2>"
+
+
 @app.route('/')
 def hello_world():
     return '''<!DOCTYPE html>
@@ -15,14 +34,11 @@ def hello_world():
         print("hello")
     </script>
     <h1>LINKS</h1>
-    <a href="https://www.google.com" target=_self title="title takes you to google">
-        <p><h1>Google</h1></p>
-    </a>
-
-    <a href="https://portal.achieve3000.com/index?lg=%2Fhome" target=_self title="title takes you to A3000">
-        <p><h1>A3000</h1></p>
-    </a>
-
+    <<form action="/fraction" method="get">
+        <input type="text" name="inputc" placeholder="make code" required>
+        <input type="submit" value="Search">
+        
+    </form>
     <a href="https://poki.com/zh/g/narrow-one" target=_self title="title takes you to a game">
         <p><h1>Game</h1></p>
     </a>
